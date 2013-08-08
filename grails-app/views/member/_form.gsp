@@ -48,28 +48,28 @@
   <g:textField name="university" maxlength="50" required="" value="${memberInstance?.university}"/>
 </div>
 
-<div class="fieldcontain ${hasErrors(bean: memberInstance, field: 'phone', 'error')} required">
+<div class="fieldcontain ${hasErrors(bean: memberInstance, field: 'phone', 'error')}">
   <label for="phone">
     <g:message code="member.phone.label" default="Phone" />
   </label>
   <g:textField name="phone" maxlength="50" value="${memberInstance?.phone}"/>
 </div>
 
-<div class="fieldcontain ${hasErrors(bean: memberInstance, field: 'website', 'error')} required">
+<div class="fieldcontain ${hasErrors(bean: memberInstance, field: 'website', 'error')}">
   <label for="website">
     <g:message code="member.website.label" default="Website" />
   </label>
   <g:textField name="website" maxlength="50"  value="${memberInstance?.website}"/>
 </div>
 
-<div class="fieldcontain ${hasErrors(bean: memberInstance, field: 'city', 'error')} required">
+<div class="fieldcontain ${hasErrors(bean: memberInstance, field: 'city', 'error')}">
   <label for="city">
     <g:message code="member.city.label" default="City" />
   </label>
   <g:textField name="city" maxlength="50" value="${memberInstance?.city}"/>
 </div>
 
-<div class="fieldcontain ${hasErrors(bean: memberInstance, field: 'country', 'error')} required">
+<div class="fieldcontain ${hasErrors(bean: memberInstance, field: 'country', 'error')}">
   <label for="country">
     <g:message code="member.country.label" default="Country" />
   </label>

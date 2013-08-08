@@ -48,17 +48,28 @@ Feature: member
     When I fill the user details with "jose" "josesilva" "jose@com" "UFPE"
     Then I am still on the create member page with the error message
 
-Scenario: register member long aditional info
+Scenario: register member invalid aditional info
    Given  I am at the create member page
-   When   I fill many user details with "berg" "bergU" "jus@cin.ufpe.br" "UFPE" "ajsdaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaajsdaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaajsdaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaajsdaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaajsdaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaajsdaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa"
+   When   I fill many user details with username, name, e-mail, university, aditional info "berg" "bergU" "jus@cin.ufpe.br" "UFPE" "ajsdaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaajsdaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaajsdaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaajsdaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaajsdaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaajsdaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa"
    Then   I am still on the create member page with the error message
 
 Scenario: register member without phone city country
    Given I am at the create member page
-   When  I fill user detail with "berg" "bergU" "jus@cin.ufpe.br" "UFPE"
+   When  I fill user detail with username, name, e-mail, university "berg" "bergU" "jus@cin.ufpe.br" "UFPE"
    Then  I am on the member show page
+   Then  the member with username "berg" is create
 
 Scenario: new member with invalid phone
    Given the system has no member with username "usernametest"
-   When I create a member with "usernametest" "telefone"
-   Then the system has no member with "usernametest"
+   When I create a member with username, phone "usernametest" "telefone"
+   Then the system has no member with username "usernametest"
+
+#if ($Autofill)
+  Scenario: new member filled with default data
+    Given I am at the create member page
+    Then I see default data filled on create form
+
+  Scenario: user registration with default data
+    Given I am at the register page
+    Then I see default data filled on register form
+#end

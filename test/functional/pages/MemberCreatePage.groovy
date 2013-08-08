@@ -15,17 +15,7 @@ class MemberCreatePage extends Page {
 
 
 
-    def fillMemberDetails(String name, String username, String email, String university) {
-        $("form").phone = "81 2126 8430"
-        $("form").website = "http://www.cin.ufpe.br"
-        $("form").city = "Recife"
-        $("form").country = "Brasil"
-        $("form").active = true
-        $("form").status = "Graduate Student"
-        $("form").enabled = true
-        fillSomeMemberDetails(name, username, email, university)
-    }
-    def fillMemberDetails2(String name, String username, String email, String university, String additionalInfo) {
+    def fillMemberDetails(String name, String username, String email, String university,String additionalInfo) {
         $("form").phone = "81 2126 8430"
         $("form").website = "http://www.cin.ufpe.br"
         $("form").city = "Recife"
@@ -43,6 +33,14 @@ class MemberCreatePage extends Page {
         $("form").email = email
         $("form").university = university
         $("input", id: "create").click()
+    }
+
+    def compareMemberUniversity(String university){
+        $("form").university ==~ /${university}/
+    }
+
+    def compareMemberCity(String city){
+        $("form").city ==~ /${city}/
     }
 }
 
